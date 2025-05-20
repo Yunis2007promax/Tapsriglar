@@ -1,5 +1,5 @@
 # Tapsriglar
-İndividual work
+#İndividual work
 import json
 import time
 import os
@@ -7,7 +7,7 @@ import os
 filename = "fitness_data.json"
 workouts = []
 
-# 1. Welcome Screen with ASCII Art
+#Welcome Screen with ASCII Art
 def welcome_screen():
     print("="*50)
     print("   *** WELCOME TO FITNESS TRACKER ***")
@@ -15,7 +15,7 @@ def welcome_screen():
     print("Tracking your workouts, one rep at a time!")
     time.sleep(1)
 
-# 2. Main Menu
+#Main Menu
 def main_menu():
     print("\nMain Menu:")
     print("1. Add new workout")
@@ -32,7 +32,7 @@ def main_menu():
     print("12. Clear all data")
     print("0. Exit")
 
-# 13. Input Validation
+#Input Validation
 def input_float(prompt):
     while True:
         try:
@@ -40,7 +40,7 @@ def input_float(prompt):
         except ValueError:
             print("Please enter a valid number.")
 
-# 3. Add new workout
+#Add new workout
 def add_workout():
     try:
         workout = {}
@@ -53,7 +53,7 @@ def add_workout():
     except Exception as e:
         print("Error:", e)
 
-# 5. View all
+#View all
 def view_workouts():
     if not workouts:
         print("No records found.")
@@ -63,7 +63,7 @@ def view_workouts():
     for w in workouts:
         print("{:<10} {:<20} {:<15} {:<10.2f}".format(w['id'], w['name'], w['date'], w['calories']))
 
-# 6. Search
+#Search
 def search_workout():
     key = input("Enter workout ID or name to search: ").lower()
     found = [w for w in workouts if w['id'].lower() == key or w['name'].lower() == key]
@@ -73,7 +73,7 @@ def search_workout():
     else:
         print("Workout not found.")
 
-# 7. Update
+#Update
 def update_workout():
     wid = input("Enter workout ID to update: ")
     for w in workouts:
@@ -85,14 +85,14 @@ def update_workout():
             return
     print("Workout not found.")
 
-# 8. Delete
+#Delete
 def delete_workout():
     wid = input("Enter ID to delete: ")
     global workouts
     workouts = [w for w in workouts if w['id'] != wid]
     print("Workout deleted if it existed.")
 
-# 10. Summary Stats
+#Summary Stats
 def summary_stats():
     if not workouts:
         print("No data.")
@@ -103,7 +103,7 @@ def summary_stats():
     print(f"Total Calories Burned: {total:.2f}")
     print(f"Average Calories per Workout: {avg:.2f}")
 
-# 11. Save
+#Save
 def save_to_file():
     try:
         with open(filename, 'w') as f:
@@ -112,7 +112,7 @@ def save_to_file():
     except Exception as e:
         print("Error:", e)
 
-# 12. Load
+#Load
 def load_from_file():
     global workouts
     try:
@@ -125,7 +125,7 @@ def load_from_file():
     except Exception as e:
         print("Error:", e)
 
-# 16. Sort
+#Sort
 def sort_workouts():
     if not workouts:
         print("No data to sort.")
@@ -137,13 +137,13 @@ def sort_workouts():
     workouts.sort(key=lambda x: x[field])
     print(f"Sorted by {field}.")
 
-# 17. Recursive count
+Recursive count
 def count_recursive(index=0):
     if index >= len(workouts):
         return 0
     return 1 + count_recursive(index + 1)
 
-# 18. Help
+#Help
 def help_menu():
     print("\nInstructions:")
     print("- Use this tracker to log your workouts.")
@@ -151,7 +151,7 @@ def help_menu():
     print("- Calories burned are tracked.")
     print("- Data is saved to a file locally (JSON format).")
 
-# 19. Clear all data
+#Clear all data
 def clear_all():
     confirm = input("Are you sure you want to delete all data? (yes/no): ")
     if confirm.lower() == "yes":
@@ -160,7 +160,7 @@ def clear_all():
     else:
         print("Cancelled.")
 
-# 14. Main loop + 15. Error handling
+#Main loop + 15. Error handling
 def main():
     welcome_screen()
     while True:
